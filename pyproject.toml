@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "link-sender"
+version = "0.1.0"
+description = ""
+authors = ["user <a.tikhonovich@verweb.dev>"]
+readme = "README.md"
+packages = [{include = "link_sender"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.1.7"
+django-environ = "^0.10.0"
+pyncclient = "^0.7"
+psycopg2 = "^2.9.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
