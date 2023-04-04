@@ -10,8 +10,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 
+from link_sender.settings import NC_LOGIN, NC_PASS
+
 nc = nextcloud_client.Client('https://cloud.peterphoto.ru')
-nc.login('admin', 'Dert345dert345##')
+nc.login(NC_LOGIN, NC_PASS)
 
 
 def connect_db():

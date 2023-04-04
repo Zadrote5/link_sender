@@ -1,6 +1,7 @@
 import nextcloud_client
 from django.shortcuts import render
 
+from link_sender.settings import NC_PASS, NC_LOGIN
 from linker.logic import getid_url, connect_db, get_path, create_url, send_email
 
 
@@ -8,7 +9,7 @@ from linker.logic import getid_url, connect_db, get_path, create_url, send_email
 def index(request):
     if request.method == 'POST':
         nc = nextcloud_client.Client('https://cloud.peterphoto.ru')
-        nc.login('admin', 'Dert345dert345##')
+        nc.login(NC_LOGIN, NC_PASS)
         modern = '/modern'
         email = request.POST.get('email')
         url = request.POST.get('url')
