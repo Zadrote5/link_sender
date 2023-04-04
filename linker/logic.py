@@ -4,13 +4,8 @@ from django.core.mail import EmailMessage
 from psycopg2 import Error
 import re
 import secrets
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email import encoders
 
-from link_sender.settings import NC_LOGIN, NC_PASS
+from link_sender.settings import NC_LOGIN, NC_PASS, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME
 
 nc = nextcloud_client.Client('https://cloud.peterphoto.ru')
 nc.login(NC_LOGIN, NC_PASS)
@@ -18,11 +13,11 @@ nc.login(NC_LOGIN, NC_PASS)
 
 def connect_db():
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="1111",
-                                      host="127.0.0.1",
-                                      port="5432",
-                                      database="postgres_db")
+        connection = psycopg2.connect(user=DB_USER,
+                                      password=DB_PASSWORD,
+                                      host=DB_HOST,
+                                      port=DB_PORT,
+                                      database=DB_NAME)
     except (Exception, Error) as error:
         print("Ошибка при подключении к PostgreSQL", error)
         connection = None
